@@ -8,8 +8,12 @@
         default_layer {
             display-name = "Base";
             bindings = <
-                &kp A &kp B
+                &tog 1 &kp N1
             >;
         };
+        layer1 {
+            display-name = "Layer 1"
+            bindings = <
+                &tog 1 &kp N2
     };
 };
