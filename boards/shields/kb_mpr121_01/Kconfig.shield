@@ -1,0 +1,2 @@
+config SHIELD_KB_MPR121_01
+    def_bool $(shields_list_contains,kb_mpr121_01)

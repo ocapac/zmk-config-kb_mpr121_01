@@ -1,0 +1,12 @@
+#include <physical_layouts.dtsi>
+
+/ {
+    physical_layout_kb_mpr121_01: physical_layout_kb_mpr121_01 {
+        compatible = "zmk,physical-layout";
+        display-name = "KB_MPR121_01";
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 150    0    0       0     0     0>
+            , <&key_physical_attrs 100 150  100    0       0   100     0>
+            ;
+    };
+};

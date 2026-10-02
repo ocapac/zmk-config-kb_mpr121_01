@@ -1,0 +1,4 @@
+name: zmk-keyboard-kb-mpr121-01
+build:
+  settings:
+    board_root: .
