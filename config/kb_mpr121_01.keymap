@@ -12,7 +12,7 @@
             >;
         };
         layer1 {
-            display-name = "Layer 1"
+            display-name = "Layer 1";
             bindings = <
                 &tog 1 &kp N2
             >;
