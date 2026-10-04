@@ -1,7 +1,50 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
 
 / {
+
+    behaviors {
+        mpr121_gestures: mpr121_gestures {
+            compatible = "zmk,behavior-mpr121-gestures";
+            #binding-cells = <0>;
+
+            tap-center = <&kp SPACE>;
+            tap-top    = <&kp UP>;
+            tap-bottom = <&kp DOWN>;
+            tap-left   = <&kp LEFT>;
+            tap-right  = <&kp RIGHT>;
+
+            swipe-up    = <&kp PG_UP>;
+            swipe-down  = <&kp PG_DN>;
+            swipe-left  = <&kp HOME>;
+            swipe-right = <&kp END>;
+
+            rotary-cw-top    = <&kp VOL_UP>;
+            rotary-ccw-top   = <&kp VOL_DN>;
+            rotary-cw-bottom = <&kp BRIGHTNESS_INC>;
+            rotary-ccw-bottom= <&kp BRIGHTNESS_DEC>;
+            rotary-cw-left   = <&kp LEFT_BRACKET>;
+            rotary-ccw-left  = <&kp RIGHT_BRACKET>;
+            rotary-cw-right  = <&kp SEMICOLON>;
+            rotary-ccw-right = <&kp APOSTROPHE>;
+        };
+
+        mpr121_proximity: mpr121_proximity {
+            compatible = "zmk,behavior-mpr121-proximity";
+            #binding-cells = <0>;
+
+            near  = <&mo 1>;
+            far   = <&mo 0>;
+            sleep = <&kp X>;
+        };
+
+        mpr121_mode_toggle: mpr121_mode_toggle {
+            compatible = "zmk,behavior-mpr121-mode-toggle";
+            #binding-cells = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
