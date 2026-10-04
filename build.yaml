@@ -22,6 +22,8 @@ include:
 
   - board: nice_nano_v2
     shield: kb_mpr121_01
+    modules:
+      - https://github.com/ocapac/zmk-mpr121-module
 
 ## To build with ZMK Studio support, uncomment the following block
 ## by removing the leading '#' from each line.
