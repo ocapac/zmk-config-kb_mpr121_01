@@ -2,6 +2,7 @@
 
 / {
 
+    /* Physical buttons */
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-direct";
         wakeup-source;
@@ -12,9 +13,49 @@
             ;
     };
 
+    /* Zephyr input device node for the MPR121 disc */
+    mpr121_input: mpr121_input {
+        compatible = "zephyr,input-device";
+    };
+
 };
 
+/* Linking the physical buttons to the shield's physical layout */
 &physical_layout_kb_mpr121_01 {
     kscan = <&kscan0>;
 };
 
+/* I2C bus & MPR121 sensor node configuration */
+&pro_micro_i2c {
+    status = "okay";
+    sda-gpios = <&gpio0 17 (GPIO_PULL_UP)>;
+    scl-gpios = <&gpio0 20 (GPIO_PULL_UP)>;
+    clock-frequency = <I2C_BITRATE_FAST>;
+
+    mpr121: mpr121@5a {
+        compatible = "freescale,mpr121";
+        reg = <0x5a>;
+        status = "okay";
+        int-gpios = <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+
+        /* Electrode configuration for the 4x4 Diamond Disc */
+        electrode-count = <8>;
+        enable-proximity;
+
+        /* Thresholds */
+        touch-threshold = <0x08>;
+        release-threshold = <0x05>;
+        prox-touch-threshold = <0x06>;
+        prox-release-threshold = <0x04>;
+
+        /* AFE & Filter Configurations */
+        debounce = <0x11>;
+        afe-configuration = <0x10>;
+        filter-configuration = <0x20>; /* Starts at 1ms ESI */
+
+        /* Auto-config targets for 3.3V VDD */
+        auto-config-usl = <202>;
+        auto-config-lsl = <131>;
+        auto-config-tl  = <182>;
+    };
+};
