@@ -14,5 +14,3 @@ manifest:
       revision: main
   self:
     path: config
-
-# See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
