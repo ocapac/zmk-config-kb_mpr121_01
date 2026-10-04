@@ -48,7 +48,7 @@
         mpr121_listener {
             compatible = "zmk,input-listener";
             device = <&mpr121_input>;
-            input-processors = <&zip_scroll>;
+            input-processors = <&zip_cursor>;
         };
     };
 
